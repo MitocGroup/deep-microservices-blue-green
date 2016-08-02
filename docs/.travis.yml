@@ -1,0 +1,12 @@
+env:
+  global:
+    # To enable run full CI build for specified branches
+    - MAJOR_VERSIONS=master
+    # Disable interactive user mode ###
+    - DEEP_NO_INTERACTION=1
+    # Set type of E2E tests. Public, private or none
+    - E2E_TESTING=none
+notifications:
+  # Send notifications to Slack
+  slack:
+    secure: k35wRcSW/s7lm7wG51gZCYNmX9hreBRBPA421J+IkQ8eGUOX6zXRe8k28oHxODdk7EyNx0ByAyMPfZv+wYwARnKLmfJLfEQ3dLxyPIqkVdw5IgaVPBsQEjzwiZXUwXHqKd7hQHseA8jG+t9TkxjVpkl0C/SMF5B1dy7J32g+PTcqgvloBMbdSfIAAGFLj5LlwJPiIxeGbdeaGguGCVIas/zlGnFMbRbARabYXdauMMM24lmPzMx2TaPGZ9qFajdf1MnnvemSE8eurqdgzBe6oTAJttrUFqfCGa9x2V4kKuRcvaDfhVL56kveLuOpmEYA2m0GvfPoHb91BDomkc+hH6KuKGHI2ZX6GTppHr1YM9M/9xmVoghfjdM2N9QcL23Gu/OC76gt8wsxYnncmhEWeDPJV0dvSibQIyItwIieEWKLATtrj0krYoaWv8Zub3c7Qetz/rEsSHi9mLNAoL4Axksn3MVg2ikYU6xCbhr/epuwjZxQiM8RjLpoQvTbMLzSv+0BZOWY4CvEb7pq93hMSHtVz45oX1hdB0dRZB+6I1WiyoirPBss/aRUzkCL6adaBQbUJLDey/md8i+MDYV0qEHE7yTU1wm7RdQ84UK1zRjL8APb2jJHm3Aq7iK4OEWYt2shRdZNJ092iXhGbo/Tj0n7aCyuv1kY4zWm7+RPevg=
