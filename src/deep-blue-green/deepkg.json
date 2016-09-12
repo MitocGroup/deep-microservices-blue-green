@@ -1,0 +1,19 @@
+{
+  "identifier": "deep-blue-green",
+  "name": "deep-blue-green",
+  "description": "Provides Blue Green deployment capabilities",
+  "version": "0.0.1",
+  "propertyRoot": false,
+  "author": {
+    "name": "Mitoc Group",
+    "email": "hello@mitocgroup.com",
+    "website": "http://www.mitocgroup.com"
+  },
+  "contributors": [
+    {
+      "name": "Alexander Cucer",
+      "email": "acucer@mitocgroup.com"
+    }
+  ],
+  "dependencies": {}
+}

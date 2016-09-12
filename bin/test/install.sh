@@ -43,14 +43,7 @@ if [ "$__IS_CONCURRENT_SCRIPT" == "$__NONE" ] || [ "$__IS_CONCURRENT_SCRIPT" == 
   ###########################################################################
   if [ ! -f ${__SRC_PATH}deeploy.example.json ]; then
     echo "File deeploy.example.json doesn't exist. Please create it and repeat"
-
-    ##########################################
-    ### work arround for case when no code ###
-    ##########################################
-    exit 0
-
-    # uncomment when code will be added
-    # exit 1
+    exit 1
   fi
 
   cp ${__SRC_PATH}deeploy.example.json ${__SRC_PATH}deeploy.json

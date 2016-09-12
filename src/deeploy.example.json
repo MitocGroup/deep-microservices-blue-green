@@ -1,0 +1,11 @@
+{
+  "appIdentifier": "sdfdsf5756765765765",
+  "appName": "My Account Blue Grean",
+  "env": "dev",
+  "awsAccountId": 123456789012,
+  "aws": {
+    "accessKeyId": "gfdgfd",
+    "secretAccessKey": "+gfdgfdgfdgfd/dEFpHV20ZxpQAkUqXwCSZBtZhCL",
+    "region": "us-west-2"
+  }
+}
