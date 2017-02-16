@@ -1,0 +1,22 @@
+{
+  "replication": {
+    "stream": {
+      "description": "replication stream action",
+      "scope": "private",
+      "type": "lambda",
+      "methods": [
+        "POST"
+      ],
+      "source": "src/replication/stream"
+    },
+    "start": {
+      "description": "replication start action",
+      "scope": "private",
+      "type": "lambda",
+      "methods": [
+        "POST"
+      ],
+      "source": "src/replication/start"
+    }
+  }
+}
