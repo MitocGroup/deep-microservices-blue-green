@@ -1,3 +1,6 @@
+/* eslint no-use-before-define:0 */
+/* eslint max-len:0 */
+
 'use strict';
 
 let aws = require('aws-sdk');

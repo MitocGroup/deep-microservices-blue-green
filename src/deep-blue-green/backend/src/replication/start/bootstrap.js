@@ -2,6 +2,8 @@
  * Created by CCristi on 2/10/17.
  */
 
+/* eslint no-use-before-define:0 */
+
 'use strict';
 
 const AWS = require('aws-sdk');
@@ -52,7 +54,7 @@ class BackFillExecutor {
   }
 
   backFillChunks(chunks) {
-    if (chunks.length == 0) {
+    if (chunks.length === 0) {
       return Promise.resolve();
     }
 
