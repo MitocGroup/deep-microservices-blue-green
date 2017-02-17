@@ -74,7 +74,9 @@ module.exports = class ReplicateUpdate extends Replicate {
         });
 
         for (let attributeName in recordData) {
-          if (!recordData.hasOwnProperty(attributeName) || attributeName === 'Id' || attributeName === 'DeepReplicationHash') {
+          if (!recordData.hasOwnProperty(attributeName)
+            || attributeName === 'Id'
+            || attributeName === 'DeepReplicationHash') {
             continue;
           }
 
