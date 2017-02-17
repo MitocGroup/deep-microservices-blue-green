@@ -39,10 +39,7 @@ exports.handler = (event, context, callback) => {
         }
       })
       .catch(e => {
-        callback({
-          error: e,
-          stack: e.stack.toString(),
-        }, null);
+        callback(e, null);
       });
   };
 
