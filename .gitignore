@@ -126,3 +126,5 @@ _vars.sh
 **/.sass-cache/
 **/coverage/
 **/coverages/
+!/src/deep-blue-green/backend/src/replication/start/*.js
+!/src/deep-blue-green/backend/src/replication/stream/*.js
