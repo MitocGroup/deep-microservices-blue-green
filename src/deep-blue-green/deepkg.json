@@ -3,6 +3,7 @@
   "name": "deep-blue-green",
   "description": "Provides Blue Green deployment capabilities",
   "version": "0.0.1",
+  "frontendEngine": ["angular", "angular2"],
   "propertyRoot": false,
   "author": {
     "name": "Mitoc Group",
