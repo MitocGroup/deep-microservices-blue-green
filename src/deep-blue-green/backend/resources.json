@@ -17,6 +17,15 @@
         "POST"
       ],
       "source": "src/replication/start"
+    },
+    "s3-notification": {
+      "description": "replication s3-notification action",
+      "scope": "private",
+      "type": "lambda",
+      "methods": [
+        "POST"
+      ],
+      "source": "src/replication/s3-notification"
     }
   }
 }
