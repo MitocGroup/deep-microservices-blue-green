@@ -1,0 +1,17 @@
+{
+  "name": "replication-s3-backfill",
+  "version": "0.0.1",
+  "description": "replication stream Action",
+  "keywords": [
+    "DEEP",
+    "DEEP Framework"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "ignore": "^3.2.4"
+  },
+  "devDependencies": {},
+  "preferGlobal": false,
+  "private": true,
+  "analyze": true
+}
