@@ -8,7 +8,7 @@ const SimpleFilter = require('./SimpleFilter');
 const BucketType = require('../BucketType');
 const ignore = require('ignore');
 
-const EOL_DELIMITER = 'EOL_DELIMITER';
+const EOL_DELIMITER = '__EOL__';
 
 module.exports = class IgnoreFilter extends SimpleFilter {
   /**
