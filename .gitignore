@@ -127,3 +127,4 @@ _vars.sh
 **/coverage/
 **/coverages/
 !/src/deep-blue-green/backend/src/replication/**/*.js
+!/src/deep-blue-green/backend/src/cloudfront/**/*.js
