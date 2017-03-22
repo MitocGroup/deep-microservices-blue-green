@@ -5,13 +5,13 @@ const ENV_GREEN = 'green';
 
 exports.handler = (event, context, callback) => {
   const request = event.Records[0].cf.request;
-  const requestListeners = [
-    envCookieRequestListener,
-    randomEnvRequestListener,
+  const requestHandlers = [
+    envCookieRequestHandler,
+    randomEnvRequestHandler,
   ];
 
-  for (let listener of requestListeners) {
-    const response = listener(request);
+  for (let handler of requestHandlers) {
+    const response = handler(request);
 
     if (response) {
       return callback(null, response);
@@ -21,7 +21,7 @@ exports.handler = (event, context, callback) => {
   callback(null, request);
 };
 
-const envCookieRequestListener = function(request) {
+function envCookieRequestHandler(request) {
   const cookies = request.headers.Cookie || [];
 
   for (let cookie of cookies) {
@@ -41,9 +41,9 @@ const envCookieRequestListener = function(request) {
   }
 
   return null;
-};
+}
 
-function randomEnvRequestListener(request) {
+function randomEnvRequestHandler(request) {
   // [percentage] is replaced by deep-package-manager:LambdaCompiler 
   return Math.random() < ([percentage] / 100)
     ? createGreenRedirectResponse(request)
