@@ -12,6 +12,7 @@ module.exports = function(callback) {
       let dynamoDbStreamStatement = policy.statement.add();
 
       dynamoDbStreamStatement.action.add('dynamodb', '*');
+      dynamoDbStreamStatement.action.add('s3', '*');
       dynamoDbStreamStatement.resource.add(dynamoDbStreamStatement.resource.create().any());
     }
   });
