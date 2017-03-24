@@ -109,7 +109,7 @@ module.exports = class S3Synchronizer {
   /**
    * @param {String} bucket
    * @param {String} key
-   * @returns {Promise}Z
+   * @returns {Promise}
    * @private
    */
   _getS3ETag(bucket, key) {
