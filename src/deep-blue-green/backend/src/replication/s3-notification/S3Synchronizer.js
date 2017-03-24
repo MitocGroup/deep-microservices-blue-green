@@ -65,8 +65,14 @@ module.exports = class S3Synchronizer {
    * @returns {Promise}
    */
   syncRecord(s3Record) {
-    return this.getDestMd5(s3Record).then(md5 => {
-      if (md5 !== s3Record.eTag) {
+    return Promise.all([
+      this.getSourceMd5(s3Record),
+      this.getDestMd5(s3Record),
+    ]).then(result => {
+      const sourceMd5 = result[0];
+      const destMd5 = result[1];
+
+      if (sourceMd5 !== destMd5) {
         console.log(`Copying "${s3Record.source}" into "${this._destinationBucket}"`);
 
         return this._s3.copyObject({
@@ -77,7 +83,7 @@ module.exports = class S3Synchronizer {
       }
 
       return {
-        ETag: md5,
+        ETag: destMd5,
       };
     });
   }
@@ -87,9 +93,29 @@ module.exports = class S3Synchronizer {
    * @returns {Promise}
    */
   getDestMd5(record) {
+    return this._getS3ETag(this._destinationBucket, record.key);
+  }
+
+  /**
+   * @param {S3Record} s3Record
+   * @returns {Promise.<String>}
+   */
+  getSourceMd5(s3Record) {
+    return s3Record.eTag
+      ? Promise.resolve(s3Record.eTag)
+      : this._getS3ETag(s3Record.bucket, s3Record.key);
+  }
+
+  /**
+   * @param {String} bucket
+   * @param {String} key
+   * @returns {Promise}
+   * @private
+   */
+  _getS3ETag(bucket, key) {
     let payload = {
-      Bucket: this._destinationBucket,
-      Key: record.key,
+      Bucket: bucket,
+      Key: key,
     };
 
     return this._s3.headObject(payload)
