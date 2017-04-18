@@ -3,6 +3,11 @@
 const ENV_BLUE = 'blue';
 const ENV_GREEN = 'green';
 
+// parameters are compiled by deep-pacakge-manager::Replication::LambdaCompiler
+'edge-params-start';
+var edgeParams = {blueBase: '', greenBase: '', domain: '', percentage: 0};
+'edge-params-end';
+
 exports.handler = (event, context, callback) => {
   const request = event.Records[0].cf.request;
   const requestHandlers = [
@@ -35,7 +40,7 @@ function envCookieRequestHandler(request) {
           return createGreenRedirectResponse(request);
         case ENV_BLUE:
         default:
-          return request;
+          return createBlueRedirectResponse(request);
       }
     }
   }
@@ -45,20 +50,34 @@ function envCookieRequestHandler(request) {
 
 function randomEnvRequestHandler(request) {
   // [percentage] is replaced by deep-package-manager:LambdaCompiler 
-  return Math.random() < ([percentage] / 100)
+  return Math.random() < (edgeParams.percentage / 100)
     ? createGreenRedirectResponse(request)
-    : request;
+    : createBlueRedirectResponse(request);
 }
 
-function createGreenRedirectResponse(blueRequest) {
+function createGreenRedirectResponse(request) {
   return {
     status: '302',
     statusDescription: '302 Found',
-    httpVersion: blueRequest.httpVersion,
+    httpVersion: request.httpVersion,
     headers: {
-      Location: ['[green-hostname]' + (blueRequest.uri || '')],
+      Location: [edgeParams.greenBase + (request.uri || '')],
       'Set-Cookie': [
-        '__deep_blue_green_env__=green;domain=[domain-name];path=/',
+        `__deep_blue_green_env__=green;domain=${edgeParams.domain};path=/`,
+      ],
+    },
+  }
+}
+
+function createBlueRedirectResponse(request) {
+  return {
+    status: '302',
+    statusDescription: '302 Found',
+    httpVersion: request.httpVersion,
+    headers: {
+      Location: [edgeParams.blueBase + (request.uri || '')],
+      'Set-Cookie': [
+        `__deep_blue_green_env__=blue;domain=${edgeParams.domain};path=/`,
       ],
     },
   }
