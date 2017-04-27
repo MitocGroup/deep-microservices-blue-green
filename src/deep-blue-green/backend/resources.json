@@ -1,4 +1,30 @@
 {
+  "cloudfront": {
+    "response-enhancer": {
+      "description": "cloudfront response-enhancer function",
+      "scope": "private",
+      "type": "lambda",
+      "engine": {
+        "runtime": "nodejs4.3-edge"
+      },
+      "methods": [
+        "POST"
+      ],
+      "source": "src/cloudfront/response-enhancer"
+    },
+    "traffic-manager": {
+      "description": "cloudfront traffic-manager function",
+      "scope": "private",
+      "type": "lambda",
+      "engine": {
+        "runtime": "nodejs4.3-edge"
+      },
+      "methods": [
+        "POST"
+      ],
+      "source": "src/cloudfront/traffic-manager"
+    }
+  },
   "replication": {
     "stream": {
       "description": "replication stream action",
